@@ -1,0 +1,44 @@
+<div class="anti-style">
+    <%- include('includes/head')%>
+    <%- include('includes/nav')%>
+    <div class="container"style="background-color: white;">
+        <div class="row">
+            <div class="col-lg-2"></div>
+            <div class="col-lg-8">
+                <h1 class="text-center">Lista de contatos:</h1>
+                <p class="text-center lead">Faça o que quiser com eles:</p>
+
+                <%- include('includes/messages')%>
+
+                <% if(contato._id){ %>
+                <form action="/contato/edit/<%= contato._id %>" method="post">
+                <% } else { %>
+                    <form action="/contato/register" method="post">
+                <% } %>
+                    <input type="hidden" name="_csrf" value=<%= csrfToken %>>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Nome:</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="nome" value="<%= contato.nome %>" required>
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Sobrenome:</label>
+                      <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="sobrenome" value="<%= contato.sobrenome %>" >
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">E-mail:</label>
+                      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" value="<%= contato.email %>">
+                    </div>
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label">Telefone:</label>
+                      <input type="tel" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"  name="telefone" value="<%= contato.telefone %>" required>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Finalizar</button>
+                  </form>
+                
+            </div>
+            <div class="col-lg-2"></div>
+        </div>
+    </div>
+    <%- include('includes/footer')%>
+</div>
